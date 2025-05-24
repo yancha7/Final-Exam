@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+yes_votes = 9
+no_votes = 3
+
+alpha_prior = 1
+beta_prior = 1
+
+alpha_post = alpha_prior + yes_votes
+beta_post = beta_prior + no_votes
+
+samples = np.random.beta(alpha_post, beta_post, 10000)
+
+plt.hist(samples, bins=30, density=True, color='plum', edgecolor='black')
+plt.title('Posterior of Support Rate')
+plt.xlabel('P(Yes)')
+plt.ylabel('Density')
+plt.show()
+
+print("Posterior Mean Support Rate:", round(np.mean(samples), 3))
