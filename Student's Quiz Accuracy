@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+correct = 14
+incorrect = 6
+
+alpha_prior = 2
+beta_prior = 2
+
+alpha_post = alpha_prior + correct
+beta_post = beta_prior + incorrect
+
+samples = np.random.beta(alpha_post, beta_post, 10000)
+
+plt.hist(samples, bins=30, density=True, color='gold', edgecolor='black')
+plt.title('Posterior of Quiz Accuracy')
+plt.xlabel('Accuracy')
+plt.ylabel('Density')
+plt.show()
+
+print("Posterior Mean Accuracy:", round(np.mean(samples), 3))
